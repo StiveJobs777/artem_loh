@@ -24,3 +24,20 @@ class IceCreamAdmin(admin.ModelAdmin):
     list_filter = ('category')
     list_display_links = ('title')
     filter_horizontal = ('title')
+
+
+class IceCreamInLiine(admin.StackedInline):
+    model = IceCream
+    extra = 0
+
+class CategoryAdmin(admin.ModelAdmin):
+    inlines =(
+    IceCreamInLiine,
+    )
+    list_display = (
+        'title',
+    )
+
+admin.site.register(Category, CategoryAdmin)
+
+admin.site.empty_value_display = 'Не задано'
