@@ -19,6 +19,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.staticfiles',   # обязательно должен быть
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -29,6 +31,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'anfisa_for_friends.urls'
@@ -88,6 +91,10 @@ USE_L10N = True
 USE_TZ = True
 
 
+STATIC_URL = '/static/'
+
+INTERNAL_IPS = ['127.0.0.1']
+DEBUG = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
