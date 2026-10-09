@@ -8,6 +8,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# Нужно для показа Django Debug Toolbar
+INTERNAL_IPS = ['127.0.0.1']
+
 
 INSTALLED_APPS = [
     'homepage.apps.HomepageConfig',
@@ -18,12 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.staticfiles',   # обязательно должен быть
+    'django.contrib.staticfiles',  # только один раз
     'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    # Debug Toolbar должен стоять как можно выше
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -31,7 +35,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
 ROOT_URLCONF = 'anfisa_for_friends.urls'
@@ -86,19 +89,13 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
 
 STATIC_URL = '/static/'
 
-INTERNAL_IPS = ['127.0.0.1']
-DEBUG = True
-STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'static_dev',
-    ]
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
